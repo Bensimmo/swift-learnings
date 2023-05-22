@@ -33,6 +33,19 @@ func customAdd2(
     function(lhs, rhs)
 }
 
+func add10To(_ value: Int) -> Int{
+    value + 20
+}
+
+func doAddition(on value : Int, using function: (Int) -> Int) -> Int{
+    function(value)
+}
+
+doAddition(on: 20, using: add10To(_:))
+
+doAddition(on: 20, using: add10To( _:))
+
+
 
 
 
