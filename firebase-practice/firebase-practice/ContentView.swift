@@ -6,48 +6,104 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
     
     @State private var email = ""
     @State private var password = ""
+    @State private var userIsLoggedIn = false
     
     var body: some View {
         
+        if userIsLoggedIn{
+            ListView()
+        } else{
+            content
+        }
+        
+    }
+    
+    var content: some View{
         ZStack{
             Rectangle()
                 .fill(.cyan.gradient)
-                
+            
             VStack(spacing: 10) {
-                Text("Welcome")
-                    .padding(.bottom, 10.0)
-                    .font(.system(size: 25))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white).offset(x: -96)
+                HStack{
+                    Text("Welcome")
+                        .padding(.bottom, 10.0)
+                        .font(.system(size: 25))
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                    Spacer()
+                }
+                
                 TextField("Email",text:$email)
                     .padding(10.0)
                     .frame(height: 40.0)
-                    .background(.white).cornerRadius(5).foregroundColor(.white).textFieldStyle(.plain)
+                    .background(.white).cornerRadius(5).foregroundColor(.black).textFieldStyle(.plain)
                     .placeholder(when: email.isEmpty){
                         Text("Email")
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .bold()
                     }
                 
-                TextField("Password",text:$password)
+                SecureField("Password",text:$password)
                     .padding(10.0)
                     .frame(height: 40.0)
-                    .background(.white).cornerRadius(5).foregroundColor(.white).textFieldStyle(.plain)
+                    .background(.white).cornerRadius(5).foregroundColor(.black).textFieldStyle(.plain)
                     .placeholder(when: email.isEmpty){
                         Text("Email")
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .bold()
                     }
-               
-            }.frame(width:300)
-
+                Button{
+                    register()
+                } label: {
+                    Text("Sign Up")
+                }
+                .padding(10.0)
+                .frame(width: 300)
+                .foregroundColor(.white)
+                .background(.blue.opacity(0.6))
+                .cornerRadius(5)
+                .padding(.top, 10)
+                
+                Button{
+                    logIn()
+                } label: {
+                    Text("Already got an account? Sign in")
+                }
+                .foregroundColor(.white)
+                .padding(.top, 30)
+                
+            }
+            .frame(width:300)
+            .onAppear{
+                Auth.auth().addStateDidChangeListener{auth, user in if user != nil{
+                        userIsLoggedIn.toggle()
+                    }
+                }
+            }
+                
         }.ignoresSafeArea()
-        
+    }
+    
+    func register(){
+        Auth.auth().createUser(withEmail: email, password: password){ result, error in
+            if error != nil{
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    func logIn(){
+        Auth.auth().signIn(withEmail: email, password: password){ result, error in
+            if error != nil{
+                print(error!.localizedDescription)
+            }
+        }
     }
 }
 
@@ -62,10 +118,10 @@ extension View {
         when shouldShow: Bool,
         alignment: Alignment = .leading,
         @ViewBuilder placeholder: () -> Content) -> some View {
-
-        ZStack(alignment: alignment) {
-            placeholder().opacity(shouldShow ? 1 : 0)
-            self
+            ZStack(alignment: alignment) {
+                placeholder().opacity(shouldShow ? 1 : 0)
+                self
         }
     }
 }
+
