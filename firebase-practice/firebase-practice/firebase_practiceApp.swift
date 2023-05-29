@@ -13,12 +13,14 @@ import Firebase
 
 struct firebase_practiceApp: App {
     
+    @StateObject var dataManager = DataManager()
+    
     init(){
         FirebaseApp.configure()
     }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(DataManager())
         }
     }
 }

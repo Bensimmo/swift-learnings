@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 
-class DataManager: ObservableObject{
+class DataManager: ObservableObject {
     @Published var dogs: [Dog] = []
     
     init(){
@@ -40,9 +40,22 @@ class DataManager: ObservableObject{
                     
                 }
             }
-            
-            
         }
     }
     
+    func addDog(dogBreed: String){
+        let db = Firestore.firestore()
+        let ref = db.collection("Dogs").document(dogBreed)
+        
+        let randomID = NSUUID().uuidString
+    
+        
+        
+        ref.setData(["breed": dogBreed, "id": randomID]) {
+            error in if let error = error{
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
 }

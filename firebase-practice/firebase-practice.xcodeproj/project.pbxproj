@@ -17,6 +17,7 @@
 		5A59534F2A21C9CA00AE2D12 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59534E2A21C9CA00AE2D12 /* ListView.swift */; };
 		5A5953512A21C9F300AE2D12 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5953502A21C9F300AE2D12 /* Dog.swift */; };
 		5A5953532A21CB3600AE2D12 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5953522A21CB3600AE2D12 /* DataManager.swift */; };
+		5A5953552A24BB2700AE2D12 /* NewDogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5953542A24BB2700AE2D12 /* NewDogView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		5A59534E2A21C9CA00AE2D12 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		5A5953502A21C9F300AE2D12 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		5A5953522A21CB3600AE2D12 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		5A5953542A24BB2700AE2D12 /* NewDogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDogView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +67,11 @@
 			children = (
 				5A5953372A20AE8A00AE2D12 /* firebase_practiceApp.swift */,
 				5A5953392A20AE8A00AE2D12 /* ContentView.swift */,
+				5A5953522A21CB3600AE2D12 /* DataManager.swift */,
 				5A59534E2A21C9CA00AE2D12 /* ListView.swift */,
 				5A5953502A21C9F300AE2D12 /* Dog.swift */,
+				5A5953542A24BB2700AE2D12 /* NewDogView.swift */,
 				5A59534A2A21C3AD00AE2D12 /* GoogleService-Info.plist */,
-				5A5953522A21CB3600AE2D12 /* DataManager.swift */,
 				5A59533B2A20AE8B00AE2D12 /* Assets.xcassets */,
 				5A59533D2A20AE8B00AE2D12 /* Preview Content */,
 			);
@@ -161,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A5953552A24BB2700AE2D12 /* NewDogView.swift in Sources */,
 				5A59533A2A20AE8A00AE2D12 /* ContentView.swift in Sources */,
 				5A5953532A21CB3600AE2D12 /* DataManager.swift in Sources */,
 				5A5953382A20AE8A00AE2D12 /* firebase_practiceApp.swift in Sources */,
