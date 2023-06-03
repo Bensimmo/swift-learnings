@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 
-struct ContentView: View {
+struct LogInPage: View {
     
     @State private var email = ""
     @State private var password = ""
@@ -17,12 +17,14 @@ struct ContentView: View {
     var body: some View {
         
         if userIsLoggedIn{
-            ListView()
+            HomePage()
         } else{
             content
         }
         
     }
+    
+    
     
     var content: some View{
         ZStack{
@@ -109,7 +111,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        LogInPage()
     }
 }
 

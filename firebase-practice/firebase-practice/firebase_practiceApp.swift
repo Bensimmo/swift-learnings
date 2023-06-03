@@ -20,7 +20,7 @@ struct firebase_practiceApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(DataManager())
+            LogInPage().environmentObject(DataManager())
         }
     }
 }

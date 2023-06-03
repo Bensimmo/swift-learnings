@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
-import Firebase
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
 
 
 struct ListView: View {
@@ -15,27 +17,25 @@ struct ListView: View {
     @State private var showPopUp = false
 
     var body: some View {
-        NavigationView{
-            List(dataManager.dogs, id: \.id) {dog in
-                Text(dog.breed)
+        VStack{
+            NavigationView{
+                List(dataManager.dogs, id: \.id) {dog in
+                    Text(dog.breed)
+                }
+                .navigationTitle("Dogs")
+                .navigationBarItems(trailing: Button(action: {
+                    showPopUp.toggle()
+                    
+                }, label:{
+                    Image(systemName: "plus")
+                }))
+                .sheet(isPresented: $showPopUp){
+                    NewDogView()
+                }
+               
             }
-            .navigationTitle("Dogs")
-            .navigationBarItems(trailing: Button(action: {
-                showPopUp.toggle()
-                
-            }, label:{
-                Image(systemName: "plus")
-            }))
-            .sheet(isPresented: $showPopUp){
-                NewDogView()
-            }
-            
-            Button(action: {
-                Auth.auth().signOut
-            }, label:{
-                Text("Sign Out")
-            })
         }
+       
     }
 }
 
